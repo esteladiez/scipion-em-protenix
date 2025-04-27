@@ -1,0 +1,31 @@
+[build-system]
+requires = ["setuptools>=42", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "scipion-em-protenix"
+dynamic = ["version", "dependencies"]
+
+authors = [
+    {name = "Estela Díez"}
+]
+description = "Plugin to use Protenix within the Scipion framework"
+readme = "README.rst"
+requires-python = ">=3.8"
+keywords = ["scipion", "electron-microscopy", "structural-biology", "scipion-3.0"]
+license = {text = "GNU General Public License v3 (GPLv3)"}
+
+[project.urls]
+Homepage = "https://github.com/scipion-em/scipion-em-protenix"
+Repository = "https://github.com/scipion-em/scipion-em-protenix"
+Issues = "https://github.com/scipion-em/scipion-em-protenix/issues"
+
+[tool.setuptools.package-data]
+"protenix"= ["protocols.conf", "icon.png"]
+
+[project.entry-points."pyworkflow.plugin"]
+protenix = "protenix"
+
+[tool.setuptools.dynamic]
+version = {attr = "protenix.__version__"}
+dependencies = {file = ["requirements.txt"]}
